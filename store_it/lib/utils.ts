@@ -1,3 +1,4 @@
+import { FileType } from "@/types";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -183,6 +184,7 @@ export const constructDownloadUrl = (bucketFileId: string) => {
 };
 
 // DASHBOARD UTILS
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getUsageSummary = (totalSpace: any) => {
   return [
     {
@@ -219,7 +221,7 @@ export const getUsageSummary = (totalSpace: any) => {
   ];
 };
 
-export const getFileTypesParams = (type: string) => {
+export const getFileTypesParam = (type: string) => {
   switch (type) {
     case "documents":
       return ["document"];
