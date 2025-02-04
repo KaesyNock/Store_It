@@ -2,8 +2,14 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Models } from "node-appwrite";
-import { Dialog } from "@/components/ui/dialog";
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogHeader,
+	DialogTitle,
+} from "@/components/ui/dialog";
+
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -11,10 +17,12 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
+	
 } from "@/components/ui/dropdown-menu";
 import { actionsDropdownItems } from "@/constants";
 import { ActionType } from "@/types";
 import { constructDownloadUrl } from "@/lib/utils";
+import { Models } from "node-appwrite";
 import Link from "next/link";
 
 
@@ -22,6 +30,19 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 	const [action, setAction] = useState<ActionType | null>(null);
+
+	const renderDialogContent = () => {
+		return (
+			<DialogContent>
+				<DialogHeader />
+					<DialogTitle>
+						Are you absolutely sure?
+					</DialogTitle>
+					<DialogDescription>
+					</DialogDescription>
+					DIALOG</DialogContent>
+		)
+	};
 
 
 	return (
@@ -81,8 +102,9 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
 							</DropdownMenuItem>
 						))}
 					</DropdownMenuContent>
-				</DropdownMenu>
-			</Dialog>
+			</DropdownMenu>
+			{renderDialogContent()}
+		</Dialog>
 	);
 };
 
